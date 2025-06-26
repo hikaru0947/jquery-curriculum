@@ -30,6 +30,16 @@
       // .eq() 引数に応じたindexの要素を指定します。
       // .addClass() クラスを追加します。
       // .removeClass() クラスを削除します。
+
+      $('.nav li').click(function(){
+        // .navクラスの中のliタブをクリックしたときに処理を実行するイベントハンドラ。
+        var num = $(this).index();
+        // クリックされたタブが、.nav liの中で何番目かを.index()で取得し、変数numに代入しています。
+        $('.contents li').addClass('is-hidden');
+        // .contents liすべてに、非表示クラスのis-hiddenを追加しており、これで全コンテンツが一度非表示になります。
+        $('.contents li').eq(num).removeClass('is-hidden');
+        // .contents liの中から、変数num番目の要素だけを選び出して、その要素からis-hiddenクラスを外します。これによって、対応するコンテンツだけが表示されます。
+      })
     </script>
   </body>
 </html>
