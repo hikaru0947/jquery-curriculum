@@ -61,10 +61,17 @@
       // ・連続で何回もホバーした時、手を止めているのにリストがスライドし続けないか
       // ・出てきたリストの上にホバーできるか
       // ※必ずレビュー前に上記挙動が問題ないか確認すること
+
       $('ul.menu__list li').hover(function(){
+      // .menu__listクラスを持つulタグ内のliに対して、hover()メソッドでマウスが乗ったときに動く処理を設定しています。
         $(this).children('.menu__list__childList').stop().slideDown();
+        // hoverされたliタブの中にある.menu__list__childListの子メニューを対象にしており、
+        // .stop()で途中のアニメーションを止めてから、.slideDown()でスライドしながら表示します。
+        // これにより、何度も素早くホバーしても動きがバグらないようにしております。
       },function(){
+        //hover()の第2引数に入っている関数は、マウスが離れたときの処理を設定しています。
         $(this).children('.menu__list__childList').stop().slideUp();
+        // ホバーが外れたli要素から、先ほどと同様に子メニューを取得し、.stop()で中断 → .slideUp()でスライドしながら非表示にします。
       });
     </script>
   </body>
